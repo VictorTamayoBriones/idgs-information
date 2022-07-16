@@ -4,22 +4,22 @@ import { ArrowDown, TeacherCardStyled } from "./style"
 
 export const Teachercard = ({name, especialidad, materias}) => {
 
-    const[showMaterias, setShowMaterias]=useState(false);
+    const[showMaterias, setShowMaterias]=useState('close');
 
-    const handleShowMaterias = ()=>setShowMaterias(!showMaterias);
+    const handleShowMaterias = ()=> setShowMaterias(showMaterias === 'close' ? 'open' : 'close');
 
     return(
-        <TeacherCardStyled showList={showMaterias} >
+        <TeacherCardStyled showlist={showMaterias} >
             <h2>{ name }</h2>
             <p>{ especialidad }</p>
             
                 
-            <ArrowDown onClick={handleShowMaterias} showList={showMaterias} />
+            <ArrowDown onClick={handleShowMaterias} showlist={showMaterias} />
             <ul>
-                <p>Materias</p>
+                <h3>Materias</h3>
                 {
                     materias.map((materia, i) => (
-                        <li key={i} >{materia}</li>
+                        <li key={i} >{materia.materia}</li>
                     ))
                 }    
             </ul>
